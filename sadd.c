@@ -4,6 +4,7 @@
 
 int sadd(int a, int b);
 int sadd_pushf_cmov(int a, int b);
+int sadd_setcc_cmov(int a, int b);
 
 typedef int (*sadd_impl_fn)(int, int);
 
