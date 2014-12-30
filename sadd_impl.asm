@@ -66,3 +66,15 @@ sadd_setcc_cmov:
     cmovnz eax, r14d
     
     ret
+
+global sadd_cmov
+sadd_cmov:
+    mov ecx, INT_MIN
+    mov edx, INT_MAX
+    
+    add esi, edi
+    cmovs ecx, edx
+    cmovo esi, ecx
+    
+    mov eax, esi
+    ret

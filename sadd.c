@@ -5,11 +5,12 @@
 int sadd(int a, int b);
 int sadd_pushf_cmov(int a, int b);
 int sadd_setcc_cmov(int a, int b);
+int sadd_cmov(int a, int b);
 
 typedef int (*sadd_impl_fn)(int, int);
 
 static const sadd_impl_fn sadd_impls[] = { sadd, sadd_pushf_cmov,
-    sadd_setcc_cmov };
+    sadd_setcc_cmov, sadd_cmov };
 
 #define SIZE(x) (sizeof(x)/sizeof(*x))
 
