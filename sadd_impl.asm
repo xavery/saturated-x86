@@ -1,3 +1,6 @@
+INT_MIN equ 0x80000000
+INT_MAX equ 0x7fffffff
+
 bits 64
 global sadd
 sadd:
@@ -12,17 +15,17 @@ sadd:
     js .max
     
 .min:
-    mov eax, 0x80000000
+    mov eax, INT_MIN
     ret
 
 .max:
-    mov eax, 0x7fffffff
+    mov eax, INT_MAX
     ret
 
 global sadd_pushf_cmov
 sadd_pushf_cmov:
-    mov ecx, 0x80000000
-    mov edx, 0x7fffffff
+    mov ecx, INT_MIN
+    mov edx, INT_MAX
     
     add esi, edi
     
@@ -41,8 +44,8 @@ sadd_pushf_cmov:
 
 global sadd_setcc_cmov
 sadd_setcc_cmov:
-    mov r15d, 0x80000000
-    mov r14d, 0x7fffffff
+    mov r15d, INT_MIN
+    mov r14d, INT_MAX
     mov eax, esi
     xor esi, esi
     xor ecx, ecx
