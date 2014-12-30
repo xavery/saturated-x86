@@ -38,3 +38,25 @@ sadd_pushf_cmov:
 
     mov eax, esi
     ret
+
+global sadd_setcc_cmov
+sadd_setcc_cmov:
+    mov r15d, 0x80000000
+    mov r14d, 0x7fffffff
+    mov eax, esi
+    xor esi, esi
+    xor ecx, ecx
+    xor edx, edx
+    
+    add eax, edi
+    seto dl
+    setc cl
+    sets sil
+    
+    test dl, cl
+    cmovnz eax, r15d
+    
+    test dl, sil
+    cmovnz eax, r14d
+    
+    ret
