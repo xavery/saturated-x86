@@ -34,7 +34,7 @@ sadd_pushf_cmov:
     
     pushf
     pop rax
-    not rax
+    not eax
     
     test ax, ((1 << OF_BIT) | (1 << CF_BIT))
     cmovz esi, ecx
