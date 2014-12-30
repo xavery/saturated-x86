@@ -1,5 +1,8 @@
 INT_MIN equ 0x80000000
 INT_MAX equ 0x7fffffff
+CF_BIT  equ 0
+SF_BIT  equ 7
+OF_BIT  equ 11
 
 bits 64
 global sadd
@@ -33,10 +36,10 @@ sadd_pushf_cmov:
     pop rax
     not rax
     
-    test ax, 0x0801
+    test ax, ((1 << OF_BIT) | (1 << CF_BIT))
     cmovz esi, ecx
     
-    test ax, 0x0880
+    test ax, ((1 << OF_BIT) | (1 << SF_BIT))
     cmovz esi, edx
 
     mov eax, esi
