@@ -26,6 +26,8 @@ static void test(sadd_impl_fn impl)
     assert(impl(INT_MIN, 0) == (INT_MIN + 0));
     assert(impl(INT_MIN, -5) == INT_MIN);
     assert(impl(INT_MIN, 5) == (INT_MIN + 5));
+    assert(impl(INT_MIN, INT_MIN) == INT_MIN);
+    assert(impl(INT_MAX, INT_MAX) == INT_MAX);
 }
 
 int main(void)
